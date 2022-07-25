@@ -1,0 +1,32 @@
+<div style="display:flex;justify-content:center;align-items:center">
+<!--  -->
+  <form #MainForm="ngForm" (ngSubmit)=getWeatherData(MainForm.value) class="form-inline mt-4 mb-4">
+    
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="staticEmail2" class="sr-only">Type City</label>
+
+      <input type="text" id="input-username" class="form-control form-control-alternative" name="City" placeholder="Enter City here" ngModel>
+
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Check</button>
+  </form>
+</div>
+
+  <div class="container" style="display:flex;justify-content:center;align-items:center">
+<div id="divWeatherMain"> 
+    <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+        <i class="fas fa-3x fa-sun sun"></i>  
+    </div>   
+    <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+        <i class="fas fa-3x fa-moon moon"></i>  
+    </div>   
+    <div class="weatherWidgetRow cloudDiv">
+        <i class="fas fa-cloud fa-3x cloud"></i>
+    </div>
+    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{WeatherData.current.temp_c}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 12px;">{{WeatherData.current.temp_c}}° / {{WeatherData.current.feelslike_c}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{WeatherData.current.feelslike_c}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.location.name}}</div>
+    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{WeatherData.current.humidity}}%</div>
+</div>
+</div>
