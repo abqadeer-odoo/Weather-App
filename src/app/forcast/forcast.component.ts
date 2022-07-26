@@ -1,25 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-weather-widget',
-  templateUrl: './weather-widget.component.html',
-  styleUrls: ['./weather-widget.component.css']
+  selector: 'app-forcast',
+  templateUrl: './forcast.component.html',
+  styleUrls: ['./forcast.component.css']
 })
-export class WeatherWidgetComponent implements OnInit {
-  lahoreMain :string='lahore';
+export class ForcastComponent implements OnInit {
 
   WeatherData:any;
-  constructor() { 
-    this.getWeatherData(location)
-
-  }
+  constructor() { }
 
   ngOnInit() {
     this.WeatherData = {
       main : {},
       isDay: true
     };
-   
     console.log(this.WeatherData);
   }
   getWeatherNewData(){
@@ -31,7 +26,7 @@ export class WeatherWidgetComponent implements OnInit {
     // this.setWeatherData(data);
   }
   getWeatherData(location :any){
-    fetch(`http://api.weatherapi.com/v1/current.json?key=d65762d2a6124cb88e8112942222507&q=${location.City ? location.City : this.lahoreMain}&aqi=no`)
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=d65762d2a6124cb88e8112942222507&q=lahore&aqi=no`)
     .then(response=>response.json())
     .then(data=>{
       console.log(data);
@@ -43,15 +38,16 @@ export class WeatherWidgetComponent implements OnInit {
 
   setWeatherData(data: any){
     this.WeatherData = data;
-    // let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
-    // this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
-    // let currentDate = new Date();
-    // this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
-    // this.WeatherData.temp_celcius = (this.WeatherData.main.temp - 273.15).toFixed(0);
-    // this.WeatherData.temp_min = (this.WeatherData.main.temp_min - 273.15).toFixed(0);
-    // this.WeatherData.temp_max = (this.WeatherData.main.temp_max - 273.15).toFixed(0);
-    // this.WeatherData.temp_feels_like = (this.WeatherData.main.feels_like - 273.15).toFixed(0);
+    let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
+    this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
+    let currentDate = new Date();
+    this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
+    this.WeatherData.temp_celcius = (this.WeatherData.main.temp - 273.15).toFixed(0);
+    this.WeatherData.temp_min = (this.WeatherData.main.temp_min - 273.15).toFixed(0);
+    this.WeatherData.temp_max = (this.WeatherData.main.temp_max - 273.15).toFixed(0);
+    this.WeatherData.temp_feels_like = (this.WeatherData.main.feels_like - 273.15).toFixed(0);
   }
+
 
 
 }

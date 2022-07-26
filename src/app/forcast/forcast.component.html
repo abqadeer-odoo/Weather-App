@@ -1,0 +1,36 @@
+<h2 style="text-align: center; margin-top:20px">Check Forcasts</h2>
+
+<div style="display:flex;justify-content:center;align-items:center">
+
+    <!--  -->
+      <form #MainForm="ngForm" (ngSubmit)=getWeatherData(MainForm.value) class="form-inline mt-4 mb-4">
+        
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="staticEmail2" class="sr-only">Type City</label>
+    
+          <input type="text" id="input-username" class="form-control form-control-alternative" name="City" placeholder="Enter City here" ngModel>
+    
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Check</button>
+      </form>
+    </div>
+    
+      <div class="container" style="display:flex;justify-content:center;align-items:center">
+        <table class="table table-striped">
+          <thead>
+            <tr *ngFor="let item of WeatherData.forecast.forecastday">
+              <th *ngFor="let items of item.hour" scope="col">#</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <th  scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+           
+          </tbody>
+        </table>
+    </div>
