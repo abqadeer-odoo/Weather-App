@@ -12,6 +12,7 @@ import { SportsComponent } from './sports/sports.component';
 import { HistroyComponent } from './histroy/histroy.component';
 import { FutureComponent } from './future/future.component';
 import { AstronomyComponent } from './astronomy/astronomy.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AstronomyComponent } from './astronomy/astronomy.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     FormsModule,
   ],
   providers: [],

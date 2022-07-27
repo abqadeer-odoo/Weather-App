@@ -1,1 +1,84 @@
-<p>histroy works!</p>
+<section class="vh-100" style="background-color: #C1CFEA;">
+    <div class="container py-5 h-100">
+        <h2 style="text-align: center;">Histroy</h2>
+        <div style="display:flex;justify-content:center;align-items:center">
+            <!--  -->
+
+
+            <form #MainForm="ngForm" (ngSubmit)=getWeatherData(MainForm.value);getWeatherNewData(MainForm.value)
+                class="form-inline mt-4 mb-4">
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="staticEmail2" class="sr-only">Type City</label>
+
+                    <input type="text" id="input-username" class="form-control form-control-alternative" name="City"
+                        placeholder="Enter City here" ngModel>
+
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="staticEmail2" class="sr-only">Type City</label>
+
+                    <input type="date" id="input-username" class="form-control form-control-alternative" name="StartDate"
+                        placeholder="Enter City here" ngModel>
+
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="staticEmail2" class="sr-only">Type City</label>
+
+                    <input type="date" id="input-username" class="form-control form-control-alternative" name="EndDate"
+                        placeholder="Enter City here" ngModel>
+
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Check</button>
+            </form>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center h-100" style="color: #282828;">
+            <div class="col-md-9 col-lg-7 col-xl-10">
+
+                <div class="card mb-4 gradient-custom" style="border-radius: 25px;">
+                    <div class="card-body p-4">
+                        <div id="demo1" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators mb-0">
+                                <li data-target="#demo1" data-slide-to="0" class="active"></li>
+                                <li data-target="#demo1" data-slide-to="1"></li>
+                                <li data-target="#demo1" data-slide-to="2"></li>
+                            </ul>
+                            <!-- Carousel inner -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <h2 style="text-align: center;padding: auto;">Last History</h2>
+
+                                    <div class="d-flex justify-content-between mb-4 pb-2">
+
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr >
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Temp</th>
+                                                    <th scope="col">location</th>
+                                                    <th scope="col">Hour</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let country of setCricket; index as i">
+                                                    <th scope="row">{{ i + 1 }}</th>
+                                                    <td>{{ country.date }}</td>
+                                                    <td>{{country.day.mintemp_c + '° C /'}} {{country.day.maxtemp_c + '° C'}}</td>
+                                                    <td>{{setFootball.name}}</td>
+                                                    <td><button class="btn btn-primary">View</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
